@@ -13,6 +13,7 @@
 		"*.vcproj",
 		"*.svn",
 		"*.php",
+        "*.md",
 
         "out.gma",
         "addon_icon.jpg",
