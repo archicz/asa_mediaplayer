@@ -1,0 +1,22 @@
+{
+	"title": "ASA - Media Player",
+	"type":	"entity",
+	"tags":	["fun", "movie"],
+	"ignore":
+	[
+		"*.txt",
+		"*.log",
+		"*.vmf",
+        "*.vmx",
+        "*.prt",
+		"*.psd",
+		"*.vcproj",
+		"*.svn",
+		"*.php",
+
+        "out.gma",
+        "addon_icon.jpg",
+		
+        "models/*.sw.vtx"
+	]
+}
