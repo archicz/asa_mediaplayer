@@ -8,7 +8,7 @@ function process_video($videoId)
 	$retval = null;
 
 	$videoUrl = sprintf('https://www.youtube.com/watch?v=%s', escapeshellarg($videoId));
-	$cmd = sprintf('yt-dlp -f "bv*[vcodec=vp9]+ba[acodec=opus]" --print "title,duration" --cookies yt_cookies.txt --get-url %s', $videoUrl);
+	$cmd = sprintf('yt-dlp -f "bv*[vcodec=vp9][height<=1080]+ba[acodec=opus]" --print "title,duration" --cookies yt_cookies.txt --get-url %s', $videoUrl);
 	exec($cmd, $output, $retval);
 
 	return ($retval == 0) ? $output : null;
