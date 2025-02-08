@@ -11,7 +11,6 @@ function VideoPicker.CheckURL(url)
     end
 end
 
--- Getting ScrW() or ScrH() inside rendertargets returns the pushed view, which ruins usage of this function in imgui widgets!!!
 local realScreenWidth = ScrW()
 local realScreenHeight = ScrH()
 
@@ -99,12 +98,15 @@ function VideoPicker.Open(callback)
         html:RunJavascript(js)
     end)
 
+    function frame:OnClose()
+        timer.Remove(timerName)
+    end
+
     function confirmBtn:DoClick()
         if callback then
             callback(selectedVideoID)
         end
 
-        timer.Remove(timerName)
         frame:Close()
     end
 end
