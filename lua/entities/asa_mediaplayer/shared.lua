@@ -7,6 +7,7 @@ ENT.Category = "ASA"
 ENT.Spawnable = true
 ENT.AdminSpawnable = false
 ENT.DoNotDuplicate = true
+ENT.Editable = true
 
 ENT.RayLength = 1000
 ENT.ScreenWidth = 1024
@@ -27,5 +28,17 @@ ASA_MEDIAPLAYER_NET_SEND_PLAY = 3
 ASA_MEDIAPLAYER_NET_SEND_STOP = 4
 
 function ENT:SetupDataTables()
-    
+    self:NetworkVar("Float", 0, "Multiplier", {
+        KeyName = "multiplier",
+        Edit = 
+        {
+            title = "Distance multiplier",
+            type = "Float",
+            order = 1, 
+            min = 0.25, 
+            max = 10
+        }
+    })
+
+    self:SetMultiplier(0.25)
 end
