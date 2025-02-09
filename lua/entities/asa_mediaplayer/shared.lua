@@ -40,5 +40,5 @@ function ENT:SetupDataTables()
         }
     })
 
-    self:SetMultiplier(0.25)
+    self:SetMultiplier(0.5)
 end
