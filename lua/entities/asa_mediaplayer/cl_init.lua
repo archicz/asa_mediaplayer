@@ -445,7 +445,7 @@ function ENT:DrawScreen()
         local hitNormal = trace.HitNormal
         
         local screenPos = hitPos + hitNormal * 1
-        local screenScale = trace.Fraction
+        local screenScale = trace.Fraction * self:GetMultiplier()
         local screenWidth = self.ScreenWidth
         local screenHeight = self.ScreenHeight
 

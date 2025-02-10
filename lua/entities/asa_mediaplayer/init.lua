@@ -7,6 +7,7 @@ AddCSLuaFile("shared.lua")
 include("shared.lua")
 
 util.AddNetworkString(ENT.NetworkString)
+resource.AddWorkshop("3424250464")
 
 local apiURL = CreateConVar("sv_asa_mediaplayer_api", "http://partyzan-technology.xyz/yt-dlp/?videoId=%s", FCVAR_ARCHIVE, "YT-DLP API URL to use")
 local maxChars = 48
