@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/entities/asa_mediaplayer"
+	"$nolod" "1"
+}
