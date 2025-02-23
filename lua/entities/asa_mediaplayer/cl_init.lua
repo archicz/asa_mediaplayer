@@ -193,8 +193,6 @@ function ENT:DrawMenu()
             imgui.SameLine()
 
             if not emptyPlaylist and isOwner and isPlaying then
-                -- uiWidgets.ActionButton("") -- play
-
                 if uiWidgets.ActionButton("") then
                     self:RequestSkip()
                 end

@@ -1,60 +1,34 @@
-surface.CreateFont("asa_mediaplayer_name", 
-    {
-        font = "Roboto",
-        size = 24,
-        weight = 500
-    }
-)
-
-surface.CreateFont("asa_mediaplayer_misc", 
-    {
-        font = "Roboto",
-        size = 18,
-        weight = 500
-    }
-)
-
-surface.CreateFont("asa_mediaplayer_duration", 
-    {
-        font = "Roboto",
-        size = 28,
-        weight = 500
-    }
-)
-
-surface.CreateFont("asa_mediaplayer_volume", 
-    {
-        font = "Roboto",
-        size = 24,
-        weight = 500
-    }
-)
-
-surface.CreateFont("asa_mediaplayer_info", 
-    {
-        font = "Roboto",
-        size = 48,
-        weight = 500
-    }
-)
-
-surface.CreateFont("asa_mediaplayer_icons", 
-    {
-        font = "asamediaplayer",
-        size = 38,
-        weight = 500
-    }
-)
+surface.CreateFont("asa_mediaplayer_name", {font = "Roboto", size = 24, weight = 500})
+surface.CreateFont("asa_mediaplayer_misc", {font = "Roboto", size = 18, weight = 500})
+surface.CreateFont("asa_mediaplayer_duration", {font = "Roboto", size = 28, weight = 500})
+surface.CreateFont("asa_mediaplayer_volume", {font = "Roboto", size = 24, weight = 500})
+surface.CreateFont("asa_mediaplayer_info", {font = "Roboto",size = 48, weight = 500})
 
 /*
-
- 0xe800 play
- 0xe801 pause
  0xe802 add
  0xe803 skip
  0xe804 volume
-
 */
+
+local iconFontAvailable = file.Exists("resource/fonts/asamediaplayer.ttf", "GAME")
+local legacyIcons = 
+{
+    [""] = "➕",
+    [""] = "⏭",
+    [""] = "V"
+}
+
+surface.CreateFont("asa_mediaplayer_icons", {font = iconFontAvailable and "asamediaplayer" or "Arial", size = 38, weight = 500})
+
+local function ResolveIconChar(char)
+    print(iconFontAvailable)
+
+    if iconFontAvailable then 
+        return char
+    else
+        return legacyIcons[char]
+    end
+end
 
 local function FormatTime(seconds)
     local h = math.floor(seconds / 3600)
@@ -174,6 +148,7 @@ function Widgets.PlaylistEntry(highlight, name, duration, requester)
 end
 
 function Widgets.ActionButton(iconChar)
+    local resolvedChar = ResolveIconChar(iconChar)
     local _, h = imgui.GetLayout()
     local w = h
     local x, y = imgui.GetCursor()
@@ -183,7 +158,7 @@ function Widgets.ActionButton(iconChar)
 
     imgui.Draw(function()
         surface.SetFont("asa_mediaplayer_icons")
-        local textW, textH = surface.GetTextSize(iconChar)
+        local textW, textH = surface.GetTextSize(resolvedChar)
 
         if isHovering then
             surface.SetTextColor(255, 255, 255, 255)
@@ -192,7 +167,7 @@ function Widgets.ActionButton(iconChar)
         end
 
         surface.SetTextPos(x + w / 2 - textW / 2, y + h / 2 - textH / 2)
-        surface.DrawText(iconChar)
+        surface.DrawText(resolvedChar)
     end)
 
     imgui.ContentAdd(w, h)
@@ -201,17 +176,18 @@ function Widgets.ActionButton(iconChar)
 end
 
 function Widgets.ActionIcon(iconChar)
+    local resolvedChar = ResolveIconChar(iconChar)
     local _, h = imgui.GetLayout()
     local w = h
     local x, y = imgui.GetCursor()
 
     imgui.Draw(function()
         surface.SetFont("asa_mediaplayer_icons")
-        local textW, textH = surface.GetTextSize(iconChar)
+        local textW, textH = surface.GetTextSize(resolvedChar)
 
         surface.SetTextColor(255, 255, 255, 255)
         surface.SetTextPos(x + w / 2 - textW / 2, y + h / 2 - textH / 2)
-        surface.DrawText(iconChar)
+        surface.DrawText(resolvedChar)
     end)
 
     imgui.ContentAdd(w, h)
