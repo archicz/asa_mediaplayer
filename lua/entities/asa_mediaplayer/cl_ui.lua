@@ -21,8 +21,6 @@ local legacyIcons =
 surface.CreateFont("asa_mediaplayer_icons", {font = iconFontAvailable and "asamediaplayer" or "Arial", size = 38, weight = 500})
 
 local function ResolveIconChar(char)
-    print(iconFontAvailable)
-
     if iconFontAvailable then 
         return char
     else
