@@ -1,6 +1,5 @@
 # ASA - Media Player
 ASA Media Player is a Garry's Mod addon that allows players to play youtube videos within the game.
-Currently discontinued, I will not host the yt-dlp instance anymore or provide support for this addon.
 
 ## Requirements
 - Garry's Mod x64 branch (Chromium/CEF)
