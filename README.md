@@ -2,7 +2,7 @@
 ASA Media Player is a Garry's Mod addon that allows players to play youtube videos within the game.
 
 ## Requirements
-- Garry's Mod x64 branch (Chromium/CEF)
+- [alib](https://github.com/archicz/alib)
 
 ## How it works
 1. The video ID is sent to the server
